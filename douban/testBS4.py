@@ -12,3 +12,9 @@ BeautifulSoup4将复杂的HTML文档转换成一个树形结构，每个节点�
 3.BeautifulSoup
 4.Comment
 """
+
+from bs4 import BeautifulSoup
+file=open("./baidu.html","rb")
+html=file.read()
+bs=BeautifulSoup(html,"html.parser")
+print(bs.title)
