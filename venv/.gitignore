@@ -123,4 +123,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 douban/baidu.html
-douban\百度_files
+douban/百度_files
