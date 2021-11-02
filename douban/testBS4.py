@@ -68,7 +68,34 @@ for item in t_list:
 #指定id为head
 #t_list=bs.find_all(id="head")
 #带class
+"""    
 t_list=bs.find_all(class_=True)
 
 for item in t_list:
     print(item)
+"""
+# 3.text参数
+#t_list=bs.find_all(text=["github","地图"])
+"""
+t_list=bs.find_all(text=re.compile("\d")) #应用正则表达式查找包含特定文本的内容(标签里的字符串)
+for item in t_list:
+    print(item)
+"""
+#4.limit
+"""
+t_list=bs.find_all("a",limit=3)
+for item in t_list:
+    print(item)
+"""
+#5.CSS选择器
+#t_list=bs.select('title') #按标签查找
+#t_list=bs.select(".mnav")#按类名查找，使用'.'
+#t_list=bs.select("#u1") #id选择器 <div class="s-top-right s-isindex-wrap" id="u1"> 及其子内容
+#t_list=bs.select("a[class='s-bri c-font-normal c-color-t']") #属性选择器
+#t_list=bs.select("head > title") #通过子标签查找 ,<title>百度一下，你就看到全是广告</title>
+# for item in t_list:
+#     print(item)
+t_list=bs.select(".mnav ~ .c-font-normal") #查询兄弟节点 '~'  标签类名为mnav同层次的类名为c-font-normal的所有标签
+for item in t_list:
+    print(item)
+#print(t_list[0].get_text()) #得到数组中第一个元素并打印！
