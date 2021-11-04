@@ -4,12 +4,13 @@
 # @Author  : kevin
 # @File    : spider.py
 # @Software: PyCharm
+# @UpdateTime : 21/10/29 下午 5:32
 def main():
     # print("This is main Function")
     baseurl = "https://movie.douban.com/top250?start="
     # 1.爬取网页
     datalist = getData(baseurl)
-    #保存数据
+    #2.保存数据
     savepath='豆瓣Top250.xls'
     saveData2xls(datalist,savepath)
 
