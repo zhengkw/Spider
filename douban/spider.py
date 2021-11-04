@@ -9,6 +9,9 @@ def main():
     baseurl = "https://movie.douban.com/top250?start="
     # 1.爬取网页
     datalist = getData(baseurl)
+    #保存数据
+    savepath='豆瓣Top250.xls'
+    saveData2xls(datalist,savepath)
 
 
 import re  # 正则表达式，进行文字匹配
@@ -37,7 +40,7 @@ import sqlite3  # 进行数据库操作
 # 爬取网页
 def getData(baseUrl):
     datalist = []
-    for i in range(0, 1):  # 调用获取页面信息的函数,利用分页的API
+    for i in range(0, 10):  # 调用获取页面信息的函数,利用分页的API
         url = baseUrl + str(i * 25)
         html = askUrl(url)
         # 逐一解析数据
@@ -70,7 +73,8 @@ def getData(baseUrl):
             # 评价数
             judgeNum = re.findall(findJudge, item)[0]
             data.append(judgeNum)
-            inq = re.findall(flindInq, item)[0]
+            #inq可能不存在，所以不用当成一个集合来取值
+            inq = re.findall(flindInq, item)
             # 概述
             if len(inq) != 0:
                 inq = inq[0].replace("。", "")  # 去掉句号
@@ -84,7 +88,7 @@ def getData(baseUrl):
             data.append(bd.strip())  # 去掉前后空格是strip 和trim()类似
             # 将一部处理好的电影信息存放入datalist中
             datalist.append(data)
-    print(datalist)
+    #print(datalist)
     return datalist
 
 
@@ -109,8 +113,23 @@ def askUrl(url):
 
 
 # 保存数据
-def saveData(dbpath):
-    pass
+def saveData2xls(datalist,path):
+    print("saving....")
+    book=xlwt.Workbook(encoding='utf-8',style_compression=0)
+    sheet=book.add_sheet("豆瓣电影Top250",cell_overwrite_ok=True)
+    #列抬头
+    col=("电影详情链接","图片链接","影片中文名","影片外国名","评分","评价人数","概况","相关信息")
+    for i in range (0,8):
+        sheet.write(0,i,col[i])
+        #写入电影内容
+    for i in range (0,250):
+        print("正在处理第%d条数据"%(i+1))
+        data=datalist[i]
+        for j in range(0,8):
+            sheet.write(i+1,j,data[j])
+    book.save(path)
+
+
 
 
 if __name__ == '__main__':
