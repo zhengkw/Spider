@@ -27,7 +27,7 @@ findJudge = re.compile(r'<span>(\d*)人评价</span>')
 # 概况
 flindInq = re.compile(r'<span class="inq">(.*)</span>')
 # 相关内容
-findBd = re.compile(r'<p class="">(.*)</p>', re.S)
+findBd = re.compile(r'<p class="">(.*?)</p>', re.S)
 from bs4 import BeautifulSoup  # 网页解析，数据获取
 import urllib.request, urllib.error  # 指定 URL获取网页数据
 import xlwt  # 进行excel操作
