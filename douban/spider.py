@@ -128,8 +128,12 @@ def saveData2xls(datalist,path):
         data=datalist[i]
         for j in range(0,8):
             sheet.write(i+1,j,data[j])
-    book.save(path)
-
+    try:
+        book.save(path)
+        print("写入完成，请查看文件！")
+    except PermissionError as e:
+        print("可能文件已经打开，请关闭文件后重试！\n写入失败，信息没有更新！")
+        pass
 
 
 
