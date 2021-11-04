@@ -25,6 +25,7 @@ for i in range(0,9):
     #     print("%d * %d = %d "%(i,j,i*j),end=" ")#写法2
     # print('\n')
         #写数据
-        sheet.write(i-1,j-1,str(i)+'*'+str(j)+'='+str(i*j))
+        #sheet.write(i-1,j-1,str(i)+'*'+str(j)+'='+str(i*j))
+        sheet.write(i-1,j-1,"%d * %d = %d "%(i,j,i*j))
 workbook.save('test.xls')
 
