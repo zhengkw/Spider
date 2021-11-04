@@ -57,6 +57,8 @@ def getData(baseUrl):
                 ctitle = titles[0]
                 data.append(ctitle)
                 otitle = titles[1].replace("/", "")  # 去掉无关符号
+                otitle =re.sub('\s'," ",otitle)
+                otitle=otitle.strip()
                 data.append(otitle)
             else:
                 data.append(titles[0])
@@ -78,6 +80,7 @@ def getData(baseUrl):
             bd = re.findall(findBd, item)[0]
             bd = re.sub('<br(\s+)?/>(\s+)?', " ", bd)  # 去掉<br/>用空格替代
             bd = re.sub('/', ' ', bd)  # 替换掉/
+            bd =re.sub("\s",' ',bd) #去掉\xa0
             data.append(bd.strip())  # 去掉前后空格是strip 和trim()类似
             # 将一部处理好的电影信息存放入datalist中
             datalist.append(data)
@@ -88,6 +91,7 @@ def getData(baseUrl):
 # 指定一个URL网页内容
 def askUrl(url):
     head = {
+        "Cookie":"ll='118282'; bid=DJmRlhWOFRk; __utmz=30149280.1635832269.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmz=223695111.1635832327.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __gads=ID=7f58bfd27720356a-2248bff289ce000a:T=1635832327:RT=1635832327:S=ALNI_MZUo78aFrhN-lYvjEa_e8x7W25rPA; _pk_ses.100001.4cf6=*; ap_v=0,6.0; _pk_id.100001.4cf6=4941b0da0553e683.1635832327.3.1636004553.1635929947.; __utma=30149280.1616381274.1635832269.1635929947.1636004553.3; __utmb=30149280.0.10.1636004553; __utmc=30149280; __utma=223695111.484981027.1635832327.1635929947.1636004553.3; __utmb=223695111.0.10.1636004553; __utmc=223695111",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
     }
     request = urllib.request.Request(url, headers=head)
