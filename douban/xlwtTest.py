@@ -21,7 +21,8 @@ for i in range(0,9):
     for j in range(0,9):
         if i == j: break
         j=j+1
-    #     print(str(i)+'*'+str(j)+'='+str(i*j),end=" ")
+        #print(str(i)+'*'+str(j)+'='+str(i*j),end=" ")
+    #     print("%d * %d = %d "%(i,j,i*j),end=" ")#写法2
     # print('\n')
         #写数据
         sheet.write(i-1,j-1,str(i)+'*'+str(j)+'='+str(i*j))
