@@ -96,8 +96,12 @@ def getData(baseUrl):
 
 # 指定一个URL网页内容
 def askUrl(url):
+    """
+    :param url:需要获取文档的URL
+    :return: 返回一个HTML
+    """
     head = {
-        "Cookie": "ll='118282'; bid=DJmRlhWOFRk; __utmz=30149280.1635832269.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmz=223695111.1635832327.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __gads=ID=7f58bfd27720356a-2248bff289ce000a:T=1635832327:RT=1635832327:S=ALNI_MZUo78aFrhN-lYvjEa_e8x7W25rPA; _pk_ses.100001.4cf6=*; ap_v=0,6.0; _pk_id.100001.4cf6=4941b0da0553e683.1635832327.3.1636004553.1635929947.; __utma=30149280.1616381274.1635832269.1635929947.1636004553.3; __utmb=30149280.0.10.1636004553; __utmc=30149280; __utma=223695111.484981027.1635832327.1635929947.1636004553.3; __utmb=223695111.0.10.1636004553; __utmc=223695111",
+        "Cookie":"bid=J7RXdvka-3o; _pk_ses.100001.4cf6=*; ap_v=0,6.0; __utma=30149280.747511940.1636094413.1636094413.1636094413.1; __utmb=30149280.0.10.1636094413; __utmc=30149280; __utmz=30149280.1636094413.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmz=223695111.1636094413.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none); __utmc=223695111; __utmb=223695111.0.10.1636094413; __utma=223695111.1779063006.1636094413.1636094413.1636094413.1; dbcl2='249567916:DNoR+zOPAmw'; ck=lxu4; _pk_id.100001.4cf6=53a08c8471158930.1636094413.1.1636094524.1636094413.; __gads=ID=9e5dc260a7d24dfc-22fe39d38dce00ee:T=1636094523:RT=1636094523:S=ALNI_MYxhbcYx9LtY9KfsT3HjnU41_2G1w; push_noty_num=0; push_doumail_num=0" ,
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36"
     }
     request = urllib.request.Request(url, headers=head)
