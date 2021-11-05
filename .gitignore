@@ -142,5 +142,5 @@ cython_debug/
 douban/百度_files
 douban/baidu.html
 douban/test.xls
-douban/test.db
+demo3/test.db
 douban/豆瓣Top250.xls
