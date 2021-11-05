@@ -145,6 +145,9 @@ def SaveData2DB(datalist, dbpath):
     # 对每一行的电影信息组装成一个sql语句
     for data in datalist:
         for index in range(len(data)):
+            #优化，2个类型为数值型的字段不应该拼接双引号
+            if index == 4 or index== 5:
+                continue
             data[index] = '"' + data[index] + '"'
         sql = '''
             insert into movie250(
